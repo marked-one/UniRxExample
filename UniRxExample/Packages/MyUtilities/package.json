@@ -1,0 +1,21 @@
+{
+  "name": "com.vladimir.my-utilities",
+  "version": "1.0.0",
+  "displayName": "My Utilities",
+  "description": "Utilities that are not part of Dependency Injection",
+  "unity": "2021.3",
+  "unityRelease": "10f1",
+ "keywords": [
+    "Utilities",
+    "Utility",
+    "Utils",
+    "Util",
+    "Extensions",
+    "Extension"
+  ],
+  "author": {
+    "name": "Vladimir Klubkov",
+    "email": "klubkov.vladimir@gmail.com",
+    "url": "https://www.linkedin.com/in/vklubkov?_l=en_US"
+  }
+}

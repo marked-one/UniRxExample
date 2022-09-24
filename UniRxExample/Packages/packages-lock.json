@@ -170,6 +170,12 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.vladimir.my-utilities": {
+      "version": "file:MyUtilities",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.unity.modules.ai": {
       "version": "1.0.0",
       "depth": 0,
