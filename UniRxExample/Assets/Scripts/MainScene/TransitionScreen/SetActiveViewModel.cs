@@ -2,11 +2,11 @@ using System;
 using UniRx;
 using Zenject;
 
-namespace UniRxExample.TransitionScreen
+namespace UniRxExample.MainScene.Transition
 {
     public class SetActiveViewModel
     {
-        public ReactiveProperty<bool> Active { get; }
+        public IReadOnlyReactiveProperty<bool> IsActive { get; }
 
         [Inject]
         public SetActiveViewModel(IActive model)
@@ -14,7 +14,7 @@ namespace UniRxExample.TransitionScreen
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
 
-            Active = model.Active;
+            IsActive = model.ObserveEveryValueChanged(x => x.IsActive).ToReactiveProperty<bool>();
         }
     }
 }

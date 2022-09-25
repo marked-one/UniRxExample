@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace UniRxExample.IntroLoading
+namespace UniRxExample.MainScene.IntroLoading
 {
     public class IntroLoadingView : MonoBehaviour
     {

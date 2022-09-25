@@ -2,11 +2,11 @@ using System;
 using UniRx;
 using Zenject;
 
-namespace UniRxExample.IntroLoading
+namespace UniRxExample.MainScene.IntroLoading
 {
     public class ProgressViewModel
     {
-        public ReactiveProperty<float> Progress { get; }
+        public IReadOnlyReactiveProperty<float> Progress { get; }
 
         [Inject]
         public ProgressViewModel(IProgress model)
@@ -14,7 +14,7 @@ namespace UniRxExample.IntroLoading
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
 
-            Progress = model.Progress;
+            Progress = model.ObserveEveryValueChanged(x => x.Progress).ToReactiveProperty<float>();
         }
     }
 }

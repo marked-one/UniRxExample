@@ -2,9 +2,9 @@ using UnityEngine;
 using Zenject;
 using UniRx;
 
-namespace UniRxExample.TransitionScreen
+namespace UniRxExample.MainScene.Transition
 {
-    public class TransitionScreenView : MonoBehaviour
+    public class TransitionView : MonoBehaviour
     {
         [SerializeField] GameObject _transitionScreen;
 
@@ -13,7 +13,7 @@ namespace UniRxExample.TransitionScreen
         void Awake()
         {
             _transitionScreen.SetActive(false);
-            ViewModel.Active.SubscribeToGameObjectSetActive(_transitionScreen).AddTo(this);
+            ViewModel.IsActive.SubscribeToGameObjectSetActive(_transitionScreen).AddTo(this);
         }
     }
 }
