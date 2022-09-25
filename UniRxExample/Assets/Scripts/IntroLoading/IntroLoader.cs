@@ -15,12 +15,12 @@ namespace UniRxExample.IntroLoading
 
         public async Task Load()
         {
-            // FAKE loading
+            // FAKE: loading imitation
             Progress.Value = 0f;
             await Observable.Timer(TimeSpan.FromSeconds(0.1));	
-            Progress.Value = 0.2f;
+            Progress.Value = 0.1f;
             await Observable.Timer(TimeSpan.FromSeconds(0.7));	
-            Progress.Value = 0.8f;
+            Progress.Value = 0.7f;
             await Observable.Timer(TimeSpan.FromSeconds(0.3));	
             Progress.Value = 1f;
         }
