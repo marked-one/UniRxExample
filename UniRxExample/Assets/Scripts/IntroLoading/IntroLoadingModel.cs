@@ -4,12 +4,12 @@ using UniRx;
 
 namespace UniRxExample.IntroLoading
 {
-    public interface IIntroLoader
+    public interface IIntroLoadingModel
     {
         Task Load();
     }
 
-    public class IntroLoader : IIntroLoader, IProgress
+    public class IntroLoadingModel : IIntroLoadingModel, IProgress
     {
         public ReactiveProperty<float> Progress { get; private set; } = new (0f);
 
