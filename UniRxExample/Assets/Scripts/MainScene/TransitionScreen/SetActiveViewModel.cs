@@ -2,7 +2,7 @@ using System;
 using UniRx;
 using Zenject;
 
-namespace UniRxExample.MainScene.Transition
+namespace UniRxExample.TransitionScreen
 {
     public class SetActiveViewModel
     {

@@ -1,8 +1,9 @@
 using UnityEngine;
 using Zenject;
 using UniRx;
+using UniRxExample.TransitionScreen;
 
-namespace UniRxExample.MainScene.Transition
+namespace UniRxExample.MainScene.TransitionScreen
 {
     public class TransitionView : MonoBehaviour
     {

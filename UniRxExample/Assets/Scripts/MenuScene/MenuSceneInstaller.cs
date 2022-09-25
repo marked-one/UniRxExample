@@ -1,8 +1,5 @@
 using System.Linq;
 using Zenject;
-using UniRxExample.MainScene.IntroLoading;
-using UniRxExample.MainScene.Transition;
-using UnityEngine;
 
 namespace UniRxExample.MenuScene
 {
@@ -11,17 +8,19 @@ namespace UniRxExample.MenuScene
         public override void InstallBindings()
         {
             InstallScene();
-            InstallMenu();
+            InstallMenuView();
         }
 
         void InstallScene()
         {
-            var nextSceneName = "Level";
-            Container.Bind<string>().FromInstance(nextSceneName).WhenInjectedInto<MenuScene>();
-            Container.Bind<IScene>().To<MenuScene>().AsSingle().WhenInjectedInto<MenuSceneRoot>();
+            Container.BindInstance("Menu").When(context => context.ObjectType == typeof(SceneUnloader) && context.AllObjectTypes.Contains(typeof(MenuScene)));
+            Container.BindInstance("Level").When(context => context.ObjectType == typeof(SceneLoader) && context.AllObjectTypes.Contains(typeof(MenuScene)));
+            Container.Bind<ISceneUnloader>().To<SceneUnloader>().WhenInjectedInto<MenuScene>();
+            Container.Bind<ISceneLoader>().To<SceneLoader>().WhenInjectedInto<MenuScene>();
+            Container.Bind<IScene>().To<MenuScene>().WhenInjectedInto<MenuSceneRoot>();
         }
 
-        void InstallMenu()
+        void InstallMenuView()
         {
         }
     }

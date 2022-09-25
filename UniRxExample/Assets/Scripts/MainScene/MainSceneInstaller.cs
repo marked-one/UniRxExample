@@ -1,8 +1,9 @@
 using System.Linq;
 using Zenject;
 using UniRxExample.MainScene.IntroLoading;
-using UniRxExample.MainScene.Transition;
+using UniRxExample.MainScene.TransitionScreen;
 using UnityEngine;
+using UniRxExample.TransitionScreen;
 
 namespace UniRxExample.MainScene
 {
@@ -14,14 +15,14 @@ namespace UniRxExample.MainScene
         {
             InstallScene();
             InstallIntroLoading();
-            InstallLoadingScreen();
+            InstallTransition();
         }
 
         void InstallScene()
         {
-            var nextSceneName = "Menu";
-            Container.Bind<string>().FromInstance(nextSceneName).WhenInjectedInto<MainScene>();
-            Container.Bind<ISceneUnloader>().FromInstance(_introUnloader);
+            Container.BindInstance("Menu").When(context => context.AllObjectTypes.Contains(typeof(MainScene)));
+            Container.Bind<ISceneUnloader>().FromInstance(_introUnloader).WhenInjectedInto<MainScene>();
+            Container.Bind<ISceneLoader>().To<SceneLoader>().WhenInjectedInto<MainScene>();
             Container.Bind<IScene>().To<MainScene>().WhenInjectedInto<MainSceneRoot>();
         }
 
@@ -30,14 +31,14 @@ namespace UniRxExample.MainScene
             Container.Bind<IntroLoadingModel>().AsSingle();
             Container.Bind<IIntroLoadingModel>().To<IntroLoadingModel>().FromResolve();
             Container.Bind<IProgress>().To<IntroLoadingModel>().FromResolve().When(context => context.AllObjectTypes.Contains(typeof(IntroLoadingView)));
-            Container.Bind<ProgressViewModel>().AsSingle().WhenInjectedInto<IntroLoadingView>();
+            Container.Bind<ProgressViewModel>().WhenInjectedInto<IntroLoadingView>();
         }
 
-        void InstallLoadingScreen()
+        void InstallTransition()
         {
-            Container.Bind<TransitionModel>().AsSingle();
-            Container.Bind<ITransitionModel>().To<TransitionModel>().FromResolve();
-            Container.Bind<IActive>().To<TransitionModel>().FromResolve().When(context => context.AllObjectTypes.Contains(typeof(TransitionView)));
+            Container.Bind<Transition>().AsSingle();
+            Container.Bind<ITransition>().To<Transition>().FromResolve();
+            Container.Bind<IActive>().To<Transition>().FromResolve().When(context => context.AllObjectTypes.Contains(typeof(TransitionView)));
             Container.Bind<SetActiveViewModel>().AsSingle().WhenInjectedInto<TransitionView>();
         }
     }

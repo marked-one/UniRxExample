@@ -1,4 +1,4 @@
-namespace UniRxExample.MainScene.Transition
+namespace UniRxExample
 {
     public interface IActive
     {
