@@ -22,8 +22,8 @@ namespace UniRxExample.MenuScene
 
         void InstallMenuView()
         {
-            Container.Bind<PlayButton>().AsSingle();
-            Container.Bind<IPlayButton>().To<PlayButton>().FromResolve();
+            Container.Bind<PlayButton>().AsSingle().When(context => context.AllObjectTypes.Contains(typeof(MenuView)) || context.AllObjectTypes.Contains(typeof(MenuScene)));
+            Container.Bind<IPlayButton>().To<PlayButton>().FromResolve().WhenInjectedInto<MenuScene>();
             Container.Bind<IClickable>().To<PlayButton>().FromResolve().When(context => context.AllObjectTypes.Contains(typeof(MenuView)));
             Container.Bind<ButtonViewModel>().WhenInjectedInto<MenuView>();
         }

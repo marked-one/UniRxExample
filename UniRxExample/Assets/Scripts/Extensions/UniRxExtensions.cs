@@ -9,6 +9,18 @@ namespace UniRxExample
 {
     public static class UniRxExtensions
     {
+        public static IDisposable SubscribeToTransformPosition(this IObservable<Vector3> source, Transform transform) 
+        {
+            if (source == null)
+                throw new ArgumentNullException(nameof(source));
+
+            if (transform == null)
+                throw new ArgumentNullException(nameof(transform));
+
+
+            return source.SubscribeWithState(transform, (position, transform) => transform.position = position);
+        }
+
         public static IDisposable SubscribeToImageFillAmount(this IObservable<float> source, Image progressMask) 
         {
             if (source == null)

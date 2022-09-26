@@ -14,7 +14,7 @@ namespace UniRxExample.TransitionScreen
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
 
-            IsActive = model.ObserveEveryValueChanged(model => model.IsActive).ToReactiveProperty<bool>();
+            IsActive = model.IsActive;
         }
     }
 }

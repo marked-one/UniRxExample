@@ -14,7 +14,7 @@ namespace UniRxExample.MainScene.IntroLoading
             if (model == null)
                 throw new ArgumentNullException(nameof(model));
 
-            Progress = model.ObserveEveryValueChanged(model => model.Progress).ToReactiveProperty<float>();
+            Progress = model.Progress;
         }
     }
 }

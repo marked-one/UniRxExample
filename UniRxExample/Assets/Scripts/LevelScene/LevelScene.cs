@@ -3,27 +3,27 @@ using UniRx;
 using UniRxExample.MainScene.TransitionScreen;
 using Zenject;
 
-namespace UniRxExample.MenuScene
+namespace UniRxExample.LevelScene
 {
-    public class MenuScene : Scene
+    public class LevelScene : Scene
     {
-        IPlayButton _playButton;
+        IBackButton _backButton;
 
         [Inject] 
-        public MenuScene(ITransition transition, ISceneUnloader sceneUnloader,
-                         ISceneLoader sceneLoader, IPlayButton playButton)
+        public LevelScene(ITransition transition, ISceneUnloader sceneUnloader,
+                         ISceneLoader sceneLoader, IBackButton backButton)
             : base(transition, sceneUnloader, sceneLoader)
         {
-            if (playButton == null)
-                throw new ArgumentNullException(nameof(playButton));
+            if (backButton == null)
+                throw new ArgumentNullException(nameof(backButton));
 
-            _playButton = playButton;
+            _backButton = backButton;
         }
 
         protected override void OnStart(ITransition transition, ISceneUnloader sceneUnloader,
                                         ISceneLoader sceneLoader, CompositeDisposable disposables)
         {
-            _playButton.Clicked.Where(clicked => clicked).Subscribe(_ => 
+            _backButton.Clicked.Where(clicked => clicked).Subscribe(_ => 
             {
                 disposables.Dispose();
                 transition.Start(sceneUnloader, sceneLoader);

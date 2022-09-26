@@ -5,7 +5,7 @@ using Zenject;
 
 namespace UniRxExample.MainScene.IntroLoading
 {
-    public class IntroLoadingView : MonoBehaviour
+    public class IntroLoaderView : MonoBehaviour
     {
         [SerializeField] GameObject _progressBar;
         [SerializeField] Image _progressMask;

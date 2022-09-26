@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731704, g: 0.13414729, b: 0.121078685, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028328, g: 0.22571328, b: 0.3069218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -446,7 +446,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.25000006, y: 0.25000006, z: -0.06698733, w: 0.9330127}
-  m_LocalPosition: {x: -6, y: 7.5, z: -10}
+  m_LocalPosition: {x: -6, y: 6.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -664,7 +664,7 @@ GameObject:
   - component: {fileID: 688644803}
   - component: {fileID: 688644804}
   m_Layer: 5
-  m_Name: IntroLoadingView
+  m_Name: IntroLoaderView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 688644802}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02ce3cb9bd55062b2a0ebead6300832d, type: 3}
+  m_Script: {fileID: 11500000, guid: 26156dcf8bde9fef48620fa862076da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _progressBar: {fileID: 1849804851}
@@ -715,8 +715,9 @@ GameObject:
   m_Component:
   - component: {fileID: 890082251}
   - component: {fileID: 890082252}
+  - component: {fileID: 890082253}
   m_Layer: 0
-  m_Name: Cameras
+  m_Name: CameraController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -750,6 +751,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c25dfbd32d1f9206089c4f57a8ddd573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &890082253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 890082250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75cfaa8772356a9d4bad65fde81bc7d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &943109071
@@ -1084,6 +1097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _introUnloader: {fileID: 1277892049}
+  _cameraController: {fileID: 890082253}
 --- !u!114 &1277892052
 MonoBehaviour:
   m_ObjectHideFlags: 0

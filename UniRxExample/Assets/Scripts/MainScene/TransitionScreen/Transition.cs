@@ -12,7 +12,7 @@ namespace UniRxExample.MainScene.TransitionScreen
     {
         CompositeDisposable _disposables = new ();
 
-        public bool IsActive { get; private set; } = false;
+        public ReactiveProperty<bool> IsActive { get; private set; } = new(false);
 
         public void Start(ISceneUnloader unloader, ISceneLoader loader)
         {
@@ -22,7 +22,7 @@ namespace UniRxExample.MainScene.TransitionScreen
             if (loader == null)
                 throw new ArgumentNullException(nameof(loader));
 
-            IsActive = true;
+            IsActive.Value = true;
 
             var unloading = unloader.Unload();
             var sceneLoading = loader.Load();
@@ -31,7 +31,7 @@ namespace UniRxExample.MainScene.TransitionScreen
             var transition = Observable.CombineLatest<float, long, Unit>(loading, minTransitionTime, (_, __) => Unit.Default);
             transition.Subscribe(_ => 
             {
-                IsActive = false;
+                IsActive.Value = false;
                 _disposables.Clear(); // Reusable
             })
             .AddTo(_disposables);

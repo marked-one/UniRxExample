@@ -4,18 +4,22 @@ using UniRxExample.MainScene.IntroLoading;
 using UniRxExample.MainScene.TransitionScreen;
 using UnityEngine;
 using UniRxExample.TransitionScreen;
+using UniRxExample.MainScene.Gameplay;
+using UniRxExample.LevelScene.Gameplay;
 
 namespace UniRxExample.MainScene
 {
     public class MainSceneInstaller : MonoInstaller
     {
         [SerializeField] MainSceneUnloader _introUnloader;
+        [SerializeField] CameraController _cameraController;
 
         public override void InstallBindings()
         {
             InstallScene();
             InstallIntroLoading();
             InstallTransition();
+            InstallGameplay();
         }
 
         void InstallScene()
@@ -28,10 +32,10 @@ namespace UniRxExample.MainScene
 
         void InstallIntroLoading()
         {
-            Container.Bind<IntroLoadingModel>().AsSingle();
-            Container.Bind<IIntroLoadingModel>().To<IntroLoadingModel>().FromResolve();
-            Container.Bind<IProgress>().To<IntroLoadingModel>().FromResolve().When(context => context.AllObjectTypes.Contains(typeof(IntroLoadingView)));
-            Container.Bind<ProgressViewModel>().WhenInjectedInto<IntroLoadingView>();
+            Container.Bind<IntroLoader>().AsSingle();
+            Container.Bind<IIntroLoader>().To<IntroLoader>().FromResolve();
+            Container.Bind<IProgress>().To<IntroLoader>().FromResolve().When(context => context.AllObjectTypes.Contains(typeof(IntroLoaderView)));
+            Container.Bind<ProgressViewModel>().WhenInjectedInto<IntroLoaderView>();
         }
 
         void InstallTransition()
@@ -40,6 +44,14 @@ namespace UniRxExample.MainScene
             Container.Bind<ITransition>().To<Transition>().FromResolve();
             Container.Bind<IActive>().To<Transition>().FromResolve().When(context => context.AllObjectTypes.Contains(typeof(TransitionView)));
             Container.Bind<SetActiveViewModel>().AsSingle().WhenInjectedInto<TransitionView>();
+        }
+
+        void InstallGameplay()
+        {
+            Container.Bind<PlayerPosition>().AsSingle();
+            Container.Bind<IMover>().To<PlayerPosition>().FromResolve();
+            Container.Bind<IMovable>().To<PlayerPosition>().FromResolve();
+            Container.Bind<MovableViewModel>().AsSingle().WhenInjectedInto<CameraController>();
         }
     }
 }

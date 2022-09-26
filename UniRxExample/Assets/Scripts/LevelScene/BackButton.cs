@@ -1,13 +1,13 @@
 using UniRx;
 
-namespace UniRxExample.MenuScene
+namespace UniRxExample.LevelScene
 {
-    public interface IPlayButton
+    public interface IBackButton
     {
         ReactiveProperty<bool> Clicked { get; }
     }
 
-    public class PlayButton : IPlayButton, IClickable
+    public class BackButton : IBackButton, IClickable
     {
         public ReactiveProperty<bool> Clicked { get; private set; } = new(false);
 

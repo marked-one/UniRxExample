@@ -1,7 +1,9 @@
+using UniRx;
+
 namespace UniRxExample
 {
     public interface IActive
     {
-        bool IsActive { get; }
+        ReactiveProperty<bool> IsActive { get; }
     }
 }

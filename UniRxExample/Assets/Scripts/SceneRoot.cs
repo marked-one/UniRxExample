@@ -7,6 +7,6 @@ namespace UniRxExample
     {
         [Inject] IScene Scene { get; set; }
 
-        void Start() => Scene.OnStart();
+        void Start() => Scene.Start();
     }
 }
