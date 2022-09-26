@@ -17,10 +17,6 @@ namespace UniRxExample.MainScene.IntroLoading
         {
             // FAKE: async loading imitation
 
-            // Let's imagine that here we have some server requests,
-            // because they usually can't be run all at once. We have  
-            // to run them in chunks and are able to increment progress.
-
             Progress.Value = 0f;
             await Task.Delay(TimeSpan.FromSeconds(0.1));
             Progress.Value = 0.1f;
