@@ -38,15 +38,15 @@ namespace UniRxExample.LevelScene.Gameplay
 
         void HandleKeyboard()
         {
-            Observable.EveryUpdate().Where(_ => Input.GetKey(KeyCode.UpArrow)).Subscribe(_ => AccelerateForward()).AddTo(this);
-            Observable.EveryUpdate().Where(_ => Input.GetKey(KeyCode.DownArrow)).Subscribe(_ => AccelerateBack()).AddTo(this);
-            Observable.EveryUpdate().Where(_ => Input.GetKey(KeyCode.LeftArrow)).Subscribe(_ => AccelerateLeft()).AddTo(this);
-            Observable.EveryUpdate().Where(_ => Input.GetKey(KeyCode.RightArrow)).Subscribe(_ => AccelerateRight()).AddTo(this);
+            Observable.EveryFixedUpdate().Where(_ => Input.GetKey(KeyCode.UpArrow)).Subscribe(_ => AccelerateForward()).AddTo(this);
+            Observable.EveryFixedUpdate().Where(_ => Input.GetKey(KeyCode.DownArrow)).Subscribe(_ => AccelerateBack()).AddTo(this);
+            Observable.EveryFixedUpdate().Where(_ => Input.GetKey(KeyCode.LeftArrow)).Subscribe(_ => AccelerateLeft()).AddTo(this);
+            Observable.EveryFixedUpdate().Where(_ => Input.GetKey(KeyCode.RightArrow)).Subscribe(_ => AccelerateRight()).AddTo(this);
         }
 
         void HandleMouse()
         {
-            Observable.EveryUpdate().Where(_ => Input.GetMouseButton(0) && 
+            Observable.EveryFixedUpdate().Where(_ => Input.GetMouseButton(0) && 
                                                 Input.mousePosition.x >= 0 && 
                                                 Input.mousePosition.y >= 0 && 
                                                 Input.mousePosition.x <= Screen.width && 
