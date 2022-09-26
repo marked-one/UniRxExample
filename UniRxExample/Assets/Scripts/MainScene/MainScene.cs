@@ -13,7 +13,7 @@ namespace UniRxExample.MainScene
         ISceneUnloader _sceneUnloader;
         ISceneLoader _sceneLoader;
 
-        CompositeDisposable _disposables = new CompositeDisposable();
+        CompositeDisposable _disposables = new ();
 
         [Inject]
         public MainScene(IIntroLoadingModel introLoader, ITransition transition,

@@ -10,7 +10,7 @@ namespace UniRxExample.MainScene.TransitionScreen
 
     public class Transition : ITransition, IActive
     {
-        CompositeDisposable _disposables = new CompositeDisposable();
+        CompositeDisposable _disposables = new ();
 
         public bool IsActive { get; private set; } = false;
 
@@ -32,7 +32,7 @@ namespace UniRxExample.MainScene.TransitionScreen
             transition.Subscribe(_ => 
             {
                 IsActive = false;
-                _disposables.Dispose();
+                _disposables.Clear(); // Reusable
             })
             .AddTo(_disposables);
         }
