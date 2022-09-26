@@ -1,2 +1,2 @@
 # UniRxExample
-Experimets with Unity and UniRx
+Experiments with Unity and UniRx
